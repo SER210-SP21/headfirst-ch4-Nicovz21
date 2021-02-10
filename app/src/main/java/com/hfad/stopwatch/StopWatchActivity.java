@@ -75,6 +75,7 @@ public class StopWatchActivity extends Activity {
                 if (running) {
                     seconds++;
 
+
                 }
                 handler.postDelayed(this, 1000);
             }
