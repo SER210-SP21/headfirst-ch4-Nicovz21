@@ -74,6 +74,7 @@ public class StopWatchActivity extends Activity {
                 timeView.setText(time);
                 if (running) {
                     seconds++;
+
                 }
                 handler.postDelayed(this, 1000);
             }
