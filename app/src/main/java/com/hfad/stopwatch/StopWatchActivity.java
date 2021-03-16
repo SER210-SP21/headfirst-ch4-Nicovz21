@@ -3,8 +3,13 @@ package com.hfad.stopwatch;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.util.Locale;
 
 public class StopWatchActivity extends Activity {
@@ -13,7 +18,8 @@ public class StopWatchActivity extends Activity {
     private boolean wasRunning;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState,
+                         @Nullable PersistableBundle persistentState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stop_watch);
         if(savedInstanceState != null){
@@ -25,10 +31,11 @@ public class StopWatchActivity extends Activity {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState){
-        savedInstanceState.putInt("seconds", seconds);
-        savedInstanceState.putBoolean("running", running);
-        savedInstanceState.putBoolean("wasRunning", wasRunning);
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putInt("seconds", seconds);
+        outState.putBoolean("running", running);
+        outState.putBoolean("wasRunning", wasRunning);
     }
     @Override
     protected void onPause(){
